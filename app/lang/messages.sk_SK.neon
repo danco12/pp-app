@@ -1,0 +1,238 @@
+global:
+	years: "%count% rok|%count% roky|%count% rokov"
+	jobsCount: "%count% pracovná príležitosť|%count% pracovné príležitosti|%count% pracovných príležitostí"
+	
+fieldOfStudy:
+	1: Všeobecné lekárstvo
+	10: Pôrodná asistencia
+	11: Všeobecná sestra
+	12: Zdravotnícky asistent 
+	13: Biológia
+	14: Botanika
+	15: Zoológia
+	16: Genetika
+	17: Mikrobiológia
+	18: Šport
+	19: Psychológia
+	2: Zubné lekárstvo
+	20: Veterinárna medicína
+	21: Poľnohospodárstvo
+	22: Lesníctvo
+	23: Potravinársky priemysel
+	24: Chémia
+	25: Veda o materiáloch
+	26: Fyzika
+	27: Forenzné vedy
+	28: Geológia
+	29: Oceánografia
+	3: "Urgentná starostlivosť "
+	30: Fyzikálne a pozemné zemepisné a environmentálne vedy
+	31: Fyzikálna geografia
+	32: Matematika
+	33: Štatistika
+	34: Informačné technológie
+	35: Softvérové inžinierstvo
+	36: Umelá inteligencia
+	37: Civilné inžinierstvo
+	38: Strojárstvo
+	39: Letecké inžinierstvo
+	4: "Ošetrovateľstvo "
+	40: Námorná architektúra
+	41: Priemyselná výroba
+	42: Chemické inžinierstvo
+	43: Metalurgia
+	44: Keramika a sklá
+	45: Polyméry a textílie
+	46: Technológie materiálov
+	47: Architektúra
+	48: Stavebníctvo
+	49: Plánovanie
+	5: Fyzioterapia
+	50: Ekonómia
+	51: Politika
+	52: Sociológia
+	53: Sociálna politika
+	54: Sociálna práca
+	55: Antropológia
+	56: Ľudská a sociálna geografia
+	57: Právo
+	58: Obchodné štúdie
+	59: Manažment
+	6: Farmácia
+	60: Financie
+	61: Účtovníctvo
+	62: Marketing
+	63: Mediálne štúdia
+	64: Žurnalistika
+	65: Anglické štúdie
+	66: Keltské štúdia
+	67: Francúzske štúdie
+	68: Nemecké štúdie
+	69: Talianske štúdie
+	7: "Sanitár "
+	70: Hispánske štúdia
+	71: Škandinávske štúdia
+	72: Ruské štúdia
+	73: Čínske štúdia
+	74: Africké štúdia
+	75: História
+	76: Dejiny umenia
+	77: Archeológia
+	78: Filozofia
+	79: Teológia a religionostika
+	8: Klinická výživa
+	80: Výtvarné umenie
+	81: Dizajn
+	82: Muzikológia
+	83: Dramaturgia
+	84: Tancovanie
+	85: Kinematografia a fotografia
+	86: Remeslá
+	87: Tvorivé písanie
+	88: Vzdelávanie učiteľov
+	89: Informatika
+	9: Rádiologický asistent/technik
+	90: Hospodárska informatika
+	91: Aplikovaná geofyzika
+	92: Elektrotechnika
+	93: Drevárstvo
+	94: Masér
+	95: "Ortopedický technik"
+	96: Očný optik
+	97: Zubný asistent/technik
+	98: Zdravotnícky laborant
+
+fieldOfWorks:
+	1: Obchod
+	10: Kreatíva a dizajn
+	11: Poľnohospodárstvo
+	12: Zdravotníctvo a sociálna starostlivosť
+	13: Doprava a logistika
+	14: "Ekonomika, financie a účtovníctvo"
+	15: Právo
+	16: "Stavebníctvo, architektúra a reality"
+	17: Automobilový priemysel
+	18: Elektrotechnika a energetika
+	19: "Cestovný ruch, gastro, hotelierstvo"
+	2: IT a telekomunikácie
+	20: Zákaznícka podpora
+	21: Manažment kvality
+	22: Ľudské zdroje a personalistika
+	23: Poisťovníctvo
+	24: Farmaceutický priemysel
+	25: Bezpečnosť a ochrana objektov
+	26: Chemický priemysel
+	27: Žurnalistika
+	28: Odevný priemysel
+	29: Štátna správa
+	3: Výroba
+	30: Prekladanie a tlmočenie
+	31: Práca na predajni
+	32: Herný priemysel
+	33: E-commerce
+	34: Predaj
+	35: Služby
+	4: Marketing a PR
+	5: Administratíva a asistentské práce
+	6: Audit a consulting
+	7: Bankovníctvo a finančníctvo
+	8: "Vzdelávanie, veda, výskum"
+	9: Strojárstvo
+
+contractType:
+	1: plný úväzok
+	2: skrátený úväzok
+	3: iný typ úväzku
+	4: dohoda
+	5: stáž
+	6: živnosť
+
+educationLevel:
+	1: Základné vzdelanie
+	2: Stredná škola
+	3: Stredná škola bez maturity
+	4: Stredná škola s maturitou
+	5: Vyššie odborné vzdelanie
+	6: Vysokoškolské štúdium
+	7: Vysokoškolské I. stupňa
+	8: Vysokoškolské II. stupňa
+	9: Vysokoškolské III. stupňa
+
+languages:
+	1: arabčina
+	10: chorvátčina
+	11: dánčina
+	12: holandčina
+	13: "angličtina (US)"
+	14: "angličtina (UK)"
+	15: fínština
+	16: "francúzština (FR)"
+	17: "francúzština (CA)"
+	18: filipínština
+	19: nemčina
+	2: afrikánčina
+	20: gréčtina
+	21: hebrejčina
+	22: maďarčina
+	23: hindčina
+	24: taliančina
+	25: indonézština
+	26: japončina
+	27: korejčina
+	28: litovčina
+	29: malajčina
+	3: bulharčina
+	30: malajčina
+	31: nórština
+	32: polština
+	33: "portugalčina (BR)"
+	34: "portugalčina (PT)"
+	35: pandžábčina
+	36: ruština
+	37: rumunčina
+	38: španielčina
+	39: švédština
+	4: bengálčina
+	40: slovenčina
+	41: slovinčina
+	42: srbština
+	43: turečtina
+	44: thajčina
+	45: tamilčina
+	46: telugčina
+	47: vietnamčina
+	48: welština
+	5: katalančina
+	6: čeština
+	7: "čínština (CN)"
+	8: "čínština (HK)"
+	9: "čínština (TW)"
+
+langLevel:
+	1: začiatočník
+	2: mierne pokročilý
+	3: pokročilý
+	4: expert
+	5: rodný jazyk
+
+companyTopValue:
+	1: Nezávislosť
+	10: Flexibilný pracovný čas
+	11: Work-life balance
+	12: Práca s poprednými expertmi
+	13: Pocit bezpečia
+	2: Atraktívne benefity
+	3: Zaujímavé a inšpiratívne projekty
+	4: Možnosť rýchleho povýšenia
+	5: Atraktívny rozvojový program
+	6: Priateľská pracovná atmosféra
+	7: Prestížny zamestnávateľ
+	8: Vysoká mzda
+	9: Medzinárodné pracovné prostredie
+
+timeUnit:
+	h: "hodina"
+	d: "deň"
+	w: "týždeň"
+	m: "mesiac"
+	y: "rok"

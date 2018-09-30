@@ -1,0 +1,26 @@
+parameters:
+
+
+application:
+	errorPresenter: Error
+	mapping:
+		*: App\*Module\Presenters\*Presenter
+
+
+session:
+	expiration: 14 days
+
+extensions:
+	cronner: stekycz\Cronner\DI\CronnerExtension
+	translation: Kdyby\Translation\DI\TranslationExtension
+
+services:
+	router: App\RouterFactory::createRouter
+	import: App\Model\ImportService
+	main: App\Model\Main
+	accessLog: App\Model\AccessLog
+	mailer: App\Model\Mailer
+
+translation:
+	default: sk
+	fallback: [sk_SK, sk]

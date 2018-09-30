@@ -1,0 +1,51 @@
+<div class="col-md-4">
+	<div class="card companyListingItem">
+		<div class="card-body">
+			<div class="row">
+				<div class="col-md-12 text-center logo-wrapper">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td class="text-center">
+									<a href="{$link}">
+										<img src="{$company->logo}" alt="logo - {$company->name}">
+									</a>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+					
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12 name-wrapper">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td class="text-center">
+									<a href="{$link}">
+										<b>
+											{$company->name}
+										</b>
+									</a>
+									<br>
+									<small>
+										{$company->city}
+									</small>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="card-footer text-center">
+			<a href="{$link}">
+				{_"messages.global.jobsCount", $company->related("jobs")->where([
+					"publication_date IS NOT NULL",
+					"expiration_date IS NULL"
+				])->count()}
+			</a>
+		</div>
+	</div>
+</div>

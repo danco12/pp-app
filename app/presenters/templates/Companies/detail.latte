@@ -1,0 +1,102 @@
+{block title}
+	{$company->name}
+{/block}
+{block ogdescription}
+	{if $company->address}
+		{$company->address}
+	{else}
+		{$company->city}
+	{/if}
+{/block}
+{block meta}
+	<meta property="og:image" content="{$company->logo}">
+	{if $img}
+		<meta property="og:image" content="{$img->title_image}">
+	{/if}
+{/block}
+{block content}
+	<div id="companyDetail">
+		<div class="row" n:if="$img">
+			<div class="col-md-12">
+				<img src="{$img->title_image}" alt="image" style="max-width: 100%">
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-12">
+				<div class="card" id="titleCard">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-3">
+								<div id="logoWrapper">
+									<img class="align-middle" src="{$company->logo}"/>
+								</div>
+							</div>
+							<div class="col-md-9" id="textWrapper">
+								<div id="text">
+									<h3>
+										{$company->name}
+										<br>
+										<small>
+											<small>
+												{if $company->address}
+													{$company->address}
+												{else}
+													{$company->city}
+												{/if}
+											</small>
+										</small>
+									</h3>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row margin-top-20">
+			<div class="col-md-12">
+				{control sharingButtons}
+			</div>
+		</div>
+		<div class="row" n:if="!empty($company->description)">
+			<div class="col-md-12">
+				<div class="card margin-top-20">
+					<div class="card-body">
+						<div class="row">
+							<div class="col-md-12">
+								{$company->description|noescape}
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="row" style="margin-top: 20px">
+			<div class="col-md-12">
+				<h4>
+					Pracovné príležitosti
+				</h4>
+				<div class="row">
+					<div class="col-md-12" id="jobList">
+						{if $jobs->count() > 0}
+							{foreach $jobs as $job}
+								<div class="row">
+									<div class="col-md-12">
+										{control jobListItem-$job->id}
+									</div>
+								</div>
+							{/foreach}
+						{else}
+							<div class="card margin-top-20">
+								<div class="card-body">
+									Firma nemá v súčastnosti žiadne pracovné príležitosti
+								</div>
+							</div>
+						{/if}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/block}

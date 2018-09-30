@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+		<link rel="stylesheet" href="{$basePath}/css/fontawesome/css/fontawesome-all.min.css">
+		{block head}{/block}
+		<link rel="stylesheet" href="{$basePath}{\App\Model\Main::initVersion('/css/style.css')}">
+		<title>{ifset title}{include title|stripHtml} | {/ifset}Pracovné príležitosti</title>
+		<meta property="fb:app_id" content="141144903424449"/>
+		<meta property="og:url" content="http://www.pracovne-prilezitosti.sk{link 'this'}"/>
+		<meta property="og:site_name" content="Pracovné príležitosti"/>
+		<meta property="og:type" content="website">
+		<meta property="og:title" content="{ifset title}{include title|stripHtml}{/ifset}">
+		<meta property="og:description" content="{ifset ogdescription}{include ogdescription|stripHtml}{/ifset}">
+		<meta name="description" content="{ifset ogdescription}{include ogdescription|stripHtml}{/ifset}">
+		{block meta}{/block}
+		<link rel="shortcut icon" href="{$basePath}/favicon.ico"/>
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=UA-55691115-7"></script>
+		<script>
+		  window.dataLayer = window.dataLayer || [];
+		  function gtag(){ dataLayer.push(arguments);}
+		  gtag('js', new Date());
+
+		  gtag('config', 'UA-55691115-7');
+		</script>
+	</head>
+	<body>
+		<div id="overlay">
+			<img src="{$basePath}/images/loader.gif">
+		</div>
+		<nav class="navbar navbar-expand-lg navbar-dark navbar-main">
+			<div class="container">
+				<a class="navbar-brand" n:href="Jobs:default">
+					<img src="{$basePath}/images/logo.jpg"/>
+				</a>
+				<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarText">
+					<ul class="navbar-nav ml-auto">
+						<li class="nav-item {ifCurrent 'Jobs:default'}active{/ifCurrent}">
+							<a class="nav-link" n:href="Jobs:default">
+								Pracovné príležitosti
+								{ifCurrent 'Jobs:default'}
+									<span class="sr-only">
+										(current)
+									</span>
+								{/ifCurrent}
+							</a>
+						</li>
+						<li class="nav-item {ifCurrent 'Companies:*'}active{/ifCurrent}">
+							<a class="nav-link" n:href="Companies:default">
+								Firmy
+								{ifCurrent 'Companies:*'}
+									<span class="sr-only">
+										(current)
+									</span>
+								{/ifCurrent}
+							</a>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</nav>
+		<div n:foreach="$flashes as $flash" class="alert alert-{$flash->type} text-center">
+			<div class="container">
+				{$flash->message}
+			</div>
+		</div>
+		<div class="container" id="content">
+			{include content}
+		</div>
+		<div class="footer text-center">
+			©{date('Y')} by <a class="primary-link" href="https://www.linkedin.com/in/daniel-van%C4%8Do-62babaa1/" target="blank"><b>Daniel Vančo</b></a>
+			<br>				
+			Tento web používa súbory cookies. Prehliadaním webu vyjadrujete súhlas s ich používaním.
+		</div>
+		{block scripts}
+			<script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+			<script src="https://nette.github.io/resources/js/netteForms.min.js"></script>
+			<script src="{$basePath}/js/nette.ajax.js"></script>
+			<script>
+				$(function()
+				{
+					$.nette.init();
+					$.ajax({
+						async: true,
+						url: {link verifyAcc!},
+						data: {
+							acc_id: {$acclogId}
+						}
+					});
+				});
+
+				var setHeightOfContent = function()
+				{
+					var footerMargin = 50;
+					$("#content").css("min-height", $(window).height() - $(".navbar-main").outerHeight() - $(".footer").outerHeight() - footerMargin);
+				};
+
+				$(window).on("resize", function()
+				{
+					setHeightOfContent();
+				});
+
+				$(function()
+				{
+					setHeightOfContent();
+				})
+			</script>
+		{/block}
+	</body>
+</html>

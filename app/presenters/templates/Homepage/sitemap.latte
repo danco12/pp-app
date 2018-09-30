@@ -1,0 +1,26 @@
+{contentType application/xml}
+<?xml version="1.0" encoding="utf-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	{foreach $urls as $url}
+	<url>
+		<loc>{$url}</loc>
+		<lastmod>{date("Y-m-d")}</lastmod>
+		<changefreq>daily</changefreq>
+		<priority>1</priority>
+	</url>
+	{foreach $jobs as $job}
+		<url>
+			<loc>{$url}/jobs/detail/{$job->id}</loc>
+			<lastmod>{$job->updated ? $job->updated->format("Y-m-d") : $job->created->format("Y-m-d")}</lastmod>
+			<changefreq>daily</changefreq>
+			<priority>0.8</priority>
+		</url>
+	{/foreach}
+	{*foreach $companies as $company}
+		<url>
+			<loc>https://jobangels.com/{$company->url_name}</loc>
+			<priority>0.7</priority>
+		</url>
+	{/foreach*}
+	{/foreach}
+</urlset>

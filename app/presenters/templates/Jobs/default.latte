@@ -1,0 +1,338 @@
+{block head}
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/10.0.2/css/bootstrap-slider.min.css">
+{/block}
+{block title}
+	Zoznam pracovných príležitostí
+{/block}
+{block content}
+	<style>
+		
+	</style>
+	<h1 class="text-center">Pracovné príležitosti</h1>
+	<div class="row">
+		<div class="col-md-12" n:snippet="jobs">
+			<script n:if="$presenter->isAjax()">
+				$('html, body').animate({
+					scrollTop: 0
+				}, 'slow');
+				$("#overlay").hide();
+				var filter = {$filter}
+			</script>
+			<div class="row">
+				<div class="col-md-3">
+					{* <div class="card">
+						<div class="card-header">
+							<i class="far fa-envelope"></i>&nbsp;&nbsp;Newsletter
+						</div>
+						<div class="card-body">
+							<h5 class="card-title">Special title treatment</h5>
+							<p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+						</div>
+					</div> *}
+					{form filterForm}
+						<div class="card" n:if="!empty($templateFilter)">
+							<div class="card-body">
+								{foreach $templateFilter as $key => $value}
+									<div class="badge badge-primary">
+										{$value}&nbsp;<a class="removeBadge" data-value="{$key}" style="color: white">x</a>
+									</div>
+									<br>
+								{/foreach}
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header" data-toggle="collapse" href="#locationCollapse" aria-expanded="true" aria-controls="collapseOne" id="locationCollapset">
+								<i class="fas fa-map-marker-alt"></i>&nbsp;&nbsp;Miesto práce
+								<span>
+									{if isset($templateFilter["location"])}
+										<i class="fas fa-angle-down"></i>
+									{else}
+										<i class="fas fa-angle-up"></i>
+									{/if}
+								</span>
+							</div>
+							<div class=" collapse {if !isset($templateFilter['location'])}show{/if}" id="locationCollapse" data-colButHref="#locationCollapset">
+								<div class="card-body">
+									{var $i = 0}
+									{if empty($form[location]->items)}
+										<p class="text-center noItems">
+											<b>
+												žiadne možnosti
+											</b>
+										</p>
+									{else}
+										{foreach $form[location]->items as $key => $label}
+											{if $i == 5}
+												<div class="hideOther" id="showLocation">
+											{/if}
+											<input n:name="location:$key">
+											<label n:name="location:$key" class="radiolabel">
+												{$label}
+											</label>
+											<br>
+										{var $i = $i + 1}
+										{/foreach}
+
+										{if $i >= 6}
+											</div>
+											{include showMoreButton, div_id=>"showLocation"}
+										{/if}
+									{/if}
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header" data-toggle="collapse" href="#workTypeCollapse" aria-expanded="true" aria-controls="collapseOne" id="workTypeCollapset">
+								<i class="far fa-clock"></i>&nbsp;&nbsp;Pracovný pomer
+								<span>
+									{if isset($templateFilter["work_type"])}
+										<i class="fas fa-angle-down"></i>
+									{else}
+										<i class="fas fa-angle-up"></i>
+									{/if}
+								</span>
+							</div>
+							<div class="collapse {if !isset($templateFilter['work_type'])}show{/if}" id="workTypeCollapse" data-colButHref="#workTypeCollapset">
+								<div class="card-body">
+									{var $i = 0}
+									{if empty($form[work_type]->items)}
+										<p class="text-center noItems">
+											<b>
+												žiadne možnosti
+											</b>
+										</p>
+									{else}
+										{foreach $form[work_type]->items as $key => $label}
+											{if $i == 5}
+												<div class="hideOther" id="showContractType">
+											{/if}
+											<input n:name="work_type:$key">
+											<label n:name="work_type:$key" class="radiolabel">
+												{$label}
+											</label>
+											<br>
+										{var $i = $i + 1}
+										{/foreach}
+
+										{if $i >= 6}
+											</div>
+											{include showMoreButton, div_id=>"showContractType"}
+										{/if}
+									{/if}
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header" data-toggle="collapse" href="#industryCollapse" aria-expanded="true" aria-controls="collapseOne" id="industryCollapset">
+								<i class="fas fa-industry"></i>&nbsp;&nbsp;Odvetvie
+								<span>
+									{if isset($templateFilter["field_of_work"])}
+										<i class="fas fa-angle-down"></i>
+									{else}
+										<i class="fas fa-angle-up"></i>
+									{/if}
+								</span>
+							</div>
+							<div class="collapse {if !isset($templateFilter['field_of_work'])}show{/if}" id="industryCollapse" data-colButHref="#industryCollapset">
+								<div class="card-body">
+									{var $i = 0}
+									{if empty($form[field_of_work]->items)}
+										<p class="text-center noItems">
+											<b>
+												žiadne možnosti
+											</b>
+										</p>
+									{else}
+										{foreach $form[field_of_work]->items as $key => $label}
+											{if $i == 5}
+												<div class="hideOther" id="showfield_of_work">
+											{/if}
+											<input n:name="field_of_work:$key">
+											<label n:name="field_of_work:$key" class="radiolabel">
+												{$label}
+											</label>
+											<br>
+										{var $i = $i + 1}
+										{/foreach}
+
+										{if $i >= 6}
+											</div>
+											{include showMoreButton, div_id=>"showfield_of_work"}
+										{/if}
+									{/if}
+								</div>
+							</div>
+						</div>
+						<div class="card">
+							<div class="card-header" data-toggle="collapse" href="#salaryCollapse" aria-expanded="true" aria-controls="collapseOne" id="salaryCollapset">
+								<i class="fas fa-money-bill-alt"></i>&nbsp;&nbsp;Mzda od (€)
+								<span>
+									{if isset($templateFilter["salary"])}
+										<i class="fas fa-angle-down"></i>
+									{else}
+										<i class="fas fa-angle-up"></i>
+									{/if}
+								</span>
+							</div>
+							<div class="collapse {if !isset($templateFilter['salary'])}show{/if}" id="salaryCollapse" data-colButHref="#salaryCollapset">
+								<div class="card-body">
+									<div class="row">
+										<div class="col-md-12">
+											<div class="input-group mb-3">
+												{input salary}
+												<div class="input-group-append">
+												    <span class="input-group-text" id="salaryFilter" style="background: #5f9ea0; border-color: #5f9ea0; color: white;">
+												    	<i class="fas fa-check"></i>
+												    </span>
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					{/form}
+				</div>
+				<script n:if="$presenter->isAjax()">
+					initCollapse();
+				</script>
+				<div class="col-md-9">
+					<div class="row">
+						<div class="col-md-12">
+							<div class="row">
+								<div class="col-md-4">
+									<b>{$jobsCount}</b> pracovných príležitostí
+								</div>
+								{* <div class="col-md-8">
+									??? tu bude zoradenie ???
+								</div> *}
+							</div>
+
+							<div class="row">
+								<div class="col-md-12" id="jobList">
+									{if $jobs->count() == 0}
+										<h3>
+											Vášmu filtru nevyhovujú žiadne ponuky
+										</h3>
+									{else}
+										{foreach $jobs as $job}
+											<div class="row">
+												<div class="col-md-12">
+													{control jobListItem-$job->id}
+												</div>
+											</div>
+										{/foreach}
+									{/if}
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<div class="col-md-12">
+							<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+								<!-- pracovne-prilezitosti zoznam -->
+								<ins class="adsbygoogle"
+									style="display:block"
+									data-ad-client="ca-pub-0444760999796576"
+									data-ad-slot="6368079993"
+									data-ad-format="link">
+								</ins>
+								<script>
+								(adsbygoogle = window.adsbygoogle || []).push({});
+							</script>
+						</div>
+					</div>
+					<div class="row" n:if="$paginator->getPageCount() > 1">
+						<div class="col-md-12">
+							<nav aria-label="Page navigation example">
+								<ul class="pagination justify-content-center">
+									<li class="page-item" n:if="!$paginator->isFirst()">
+										<a class="page-link ajax" n:href="page! page=>($paginator->page - 1), filter=>$filter" tabindex="-1">&laquo;</a>
+									</li>
+									<li class="page-item {if $i == $paginator->page} active {/if}" n:for="$i = 1; $i <= $paginator->pageCount; $i++">
+										<a class="page-link ajax" n:href="page! page=>($i), filter=>$filter">
+											{$i}
+										</a>
+									</li>
+									<li class="page-item" n:if="!$paginator->isLast()">
+										<a class="page-link ajax" n:href="page! page=>($paginator->page + 1), filter=>$filter">&raquo;</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+{/block}
+{define showMoreButton}
+	<div class="text-center">
+		<a class="showMore btn btn-sm btn-primary" href="#" data-show="#{$div_id}" role="button">
+			Zobraziť viac
+		</a>
+	</div>
+{/define}
+{block scripts}
+	{include parent}
+	<script>
+		{*
+			funkcie
+		*}
+		var initCollapse = function()
+		{
+			$(".collapse").on("show.bs.collapse", function(){
+				colBut = $(this).data("colbuthref");
+
+				$(colBut + " span").html('<i class="fas fa-angle-up"></i>');
+			});
+
+			$(".collapse").on("hide.bs.collapse", function(){
+				colBut = $(this).data("colbuthref");
+
+				$(colBut + " span").html('<i class="fas fa-angle-down"></i>');
+			});
+		}
+
+		var submitFormCustom = function()
+		{
+			$("#overlay").show();
+			$("#frm-filterForm").submit();
+		}
+	</script>
+	<script>
+		$(document).on("click", ".removeBadge", function(e){
+			$("#overlay").show();
+			value = $(this).data("value");
+
+			$.nette.ajax({
+			    url: this.href,
+				data: {
+					filter: filter,
+					value: value,
+				    do: 'deleteFromFilter'
+				}
+			});
+		});
+
+		$(document).on("click", ".showMore", function(e){
+			e.preventDefault();
+			$($(this).data("show")).show();
+			$(this).hide();
+		});
+
+		$(document).on("change", "#frm-filterForm input:not(.notSubmit)", function(){
+			if ($(this).attr("id") != "frm-filterForm-salary"){
+				submitFormCustom();
+			}
+		});
+
+		$(document).on("click", "#salaryFilter", function(){
+			submitFormCustom();
+		});
+
+		$(function(){
+			initCollapse();
+		});
+	</script>
+{/block}

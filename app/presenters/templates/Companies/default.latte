@@ -1,0 +1,13 @@
+{block title}
+	Zoznam firiem
+{/block}
+{block content}
+	<h1 class="text-center">
+		Firmy
+	</h1>
+	<div class="row" id="companyList">
+		{foreach $companies as $c}
+			{control companyListItem-$c->id}
+		{/foreach}
+	</div>
+{/block}
